@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8" />
+    
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>BIKER Search</title>
+    
+    <link href="/static/css/bootstrap.css" rel="stylesheet" />
+	<link href="/static/css/coming-sssoon.css" rel="stylesheet" />    
+    
+    <!--     Fonts     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+    
+</head>
+<style type="text/css">
+.margin-top{
+    margin-top: 20px;
+}
+
+.dowrap{
+    white-space:pre-line;
+}
+</style>
+
+<body>
+<div>
+
+    <div id="mainForm" class="margin-top">
+        <nav class="navbar navbar-light bg-faded">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-1" id="bs-example-navbar-collapse-1">
+            <form id="searchForm" class="form-inline" role="form" action="/index" method="post">
+                <div class="form-group">
+                    <a href="/"><img src="/static/images/biker1.png" alt="Home"></a>
+                </div>
+                <div class="form-group col-md-offset-1 input-group-lg" style="width:600px">
+                    <label for="query_result" class="sr-only">query</label>
+                    <input type="text" class="form-control" placeholder="Your query here..." name="query" value="{{uquery}}">
+                </div>
+                <button type="submit" class="btn btn-danger btn-fill">Search</button>
+            </form>
+            </div>
+        </div>
+        </nav>
+    </div>
+
+<hr width=85% size=3 color=#00ffff style="FILTER: alpha(opacity=100,finishopacity=0,style=3)"> 
+
+    <div class="container col-md-12 col-md-offset-1">
+        <!-- content  -->
+        <!-- result_apis, methods_descriptions, result_titles, result_code-->
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h3 class="list-group-item-heading" style="color:blue">Rank 1 : {{result_apis[0]}}</h3>
+        <h5 class="list-group-item-heading" style="color:green"><strong>Java Doc : </strong></h5>
+        <p class="list-group-item-text">{{methods_descriptions[0]}}</p>
+        <br />
+        <h5 class="list-group-item-heading" style="color:green"><strong>Relevant Questions : </strong></h5>
+        {% for title,title_id in result_titles[0].iteritems() %}
+            <p class="list-group-item-text"><a href="https://stackoverflow.com/questions/{{title_id}}">{{loop.index}}. {{title}}</a></p>
+        {% endfor %}
+        {% for code in result_code[0] %}
+            <br />
+            <h5 class="list-group-item-heading" style="color:green"><strong>Code Snippets {{loop.index}}: </strong></h5>
+            <p class="dowrap list-group-item-text">{{code}}</p>
+        {% endfor %}
+      </li>
+      <li class="list-group-item">
+        <h3 class="list-group-item-heading" style="color:blue">Rank 2 : {{result_apis[1]}}</h3>
+        <h5 class="list-group-item-heading" style="color:green"><strong>Java Doc : </strong></h5>
+        <p class="list-group-item-text">{{methods_descriptions[1]}}</p>
+        <br />
+        <h5 class="list-group-item-heading" style="color:green"><strong>Relevant Questions : </strong></h5>
+        {% for title,title_id in result_titles[1].iteritems() %}
+            <p class="list-group-item-text"><a href="https://stackoverflow.com/questions/{{title_id}}">{{loop.index}}. {{title}}</a></p>
+        {% endfor %}
+        {% for code in result_code[1] %}
+            <br />
+            <h5 class="list-group-item-heading" style="color:green"><strong>Code Snippets {{loop.index}}: </strong></h5>
+            <p class="dowrap list-group-item-text">{{code}}</p>
+        {% endfor %}
+      </li>
+      <li class="list-group-item">
+        <h3 class="list-group-item-heading" style="color:blue">Rank 3 : {{result_apis[2]}}</h3>
+        <h5 class="list-group-item-heading" style="color:green"><strong>Java Doc : </strong></h5>
+        <p class="list-group-item-text">{{methods_descriptions[2]}}</p>
+        <br />
+        <h5 class="list-group-item-heading" style="color:green"><strong>Relevant Questions : </strong></h5>
+        {% for title,title_id in result_titles[2].iteritems() %}
+            <p class="list-group-item-text"><a href="https://stackoverflow.com/questions/{{title_id}}">{{loop.index}}. {{title}}</a></p>
+        {% endfor %}
+        {% for code in result_code[2] %}
+            <br />
+            <h5 class="list-group-item-heading" style="color:green"><strong>Code Snippets {{loop.index}}: </strong></h5>
+            <p class="dowrap list-group-item-text">{{code}}</p>
+        {% endfor %}
+      </li>
+      <li class="list-group-item">
+        <h3 class="list-group-item-heading" style="color:blue">Rank 4 : {{result_apis[3]}}</h3>
+        <h5 class="list-group-item-heading" style="color:green"><strong>Java Doc : </strong></h5>
+        <p class="list-group-item-text">{{methods_descriptions[3]}}</p>
+        <br />
+        <h5 class="list-group-item-heading" style="color:green"><strong>Relevant Questions : </strong></h5>
+        {% for title,title_id in result_titles[3].iteritems() %}
+            <p class="list-group-item-text"><a href="https://stackoverflow.com/questions/{{title_id}}">{{loop.index}}. {{title}}</a></p>
+        {% endfor %}
+        {% for code in result_code[3] %}
+            <br />
+            <h5 class="list-group-item-heading" style="color:green"><strong>Code Snippets {{loop.index}}: </strong></h5>
+            <p class="dowrap list-group-item-text">{{code}}</p>
+        {% endfor %}
+      </li>
+      <li class="list-group-item">
+        <h3 class="list-group-item-heading" style="color:blue">Rank 5 : {{result_apis[4]}}</h3>
+        <h5 class="list-group-item-heading" style="color:green"><strong>Java Doc : </strong></h5>
+        <p class="list-group-item-text">{{methods_descriptions[4]}}</p>
+        <br />
+        <h5 class="list-group-item-heading" style="color:green"><strong>Relevant Questions : </strong></h5>
+        {% for title,title_id in result_titles[4].iteritems() %}
+            <p class="list-group-item-text"><a href="https://stackoverflow.com/questions/{{title_id}}">{{loop.index}}. {{title}}</a></p>
+        {% endfor %}
+        {% for code in result_code[4] %}
+            <br />
+            <h5 class="list-group-item-heading" style="color:green"><strong>Code Snippets {{loop.index}}: </strong></h5>
+            <p class="dowrap list-group-item-text">{{code}}</p>
+        {% endfor %}
+      </li>
+    </ul>
+
+    </div>
+</div>
+ </body>
+   <script src="/static/js/jquery-1.10.2.js" type="text/javascript"></script>
+   <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+
+</html>
